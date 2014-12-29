@@ -1,0 +1,11 @@
+collections:
+  source:
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "source"
+    values:
+      layout: "layout"

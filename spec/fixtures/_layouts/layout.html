@@ -1,0 +1,23 @@
+{% capture flat_links %}{% next_prev site.data.toc %}{% endcapture %}
+{% assign flat_links = flat_links | split: '|' %}
+
+<div class="pager">
+  <ul>
+    {% for title in flat_links %}
+    {% if title == page.title %}
+    {% unless forloop.first %}
+    <li class="left"><a href="source/{{ prev | slugify }}">&lt; Previous</a></li>
+    {% endunless %}
+
+    {% unless forloop.last %}
+    <li class="right"><a href="source/{{ flat_links[forloop.index] | slugify }}">Next &gt;</a></li>
+    {% endunless %}
+
+    {% break %}
+    {% endif %}
+    {% assign prev = title %}
+    {% endfor %}
+  </ul>
+</div>
+
+{{ content }}
