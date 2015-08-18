@@ -33,17 +33,21 @@ module Jekyll
       list = []
       datafile = construct_datafile(context, @keys)
 
-      datafile.each do |line|
-        if line.is_a? Hash
-          line.each_pair do |parent, children|
-            list << "- [#{parent}](#{Utils.slugify parent})"
-            children.each do |subsection|
-              list << "  - [#{subsection}](#{Utils.slugify subsection})"
+      if datafile
+        datafile.each do |line|
+          if line.is_a? Hash
+            line.each_pair do |parent, children|
+              list << "- [#{parent}](#{Utils.slugify parent})"
+              children.each do |subsection|
+                list << "  - [#{subsection}](#{Utils.slugify subsection})"
+              end
             end
+          else
+            list << "- [#{line}](#{Utils.slugify line})"
           end
-        else
-          list << "- [#{line}](#{Utils.slugify line})"
         end
+      else
+        list = []
       end
 
       context.registers[:site].data["toc_#{@id}"] = list.join("\n")
