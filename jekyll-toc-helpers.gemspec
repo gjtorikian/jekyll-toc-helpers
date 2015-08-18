@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'jekyll-toc-helpers'
-  spec.version       = '0.1.1'
+  spec.version       = '0.1.2'
   spec.authors       = ['Garen Torikian']
   spec.email         = ['gjtorikian@gmail.com']
   spec.summary       = 'Some helper tags for generating TOCs.'
